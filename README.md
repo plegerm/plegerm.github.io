@@ -101,8 +101,12 @@
     <div class="box">
         <h3 id="servicesTitle">Storitve</h3>
         <ul id="servicesList">
-            <li>Inženirsko svetovanje</li>
-            <li>Razvoj plastičnih izdelkov</li>
+            <li>Konstruiranje orodij za brizganje plastike</li>
+            <li>Konstruiranje orodij za brizganje gume ali stiskanje gume</li>
+            <li>Konstruiranje plastičnih izdelkov</li>
+            <li>Konstruiranje gumjastih izdelkov</li>
+            <li>Inženirsko svetovanje na področju plastike in gume</li>
+            <li>Razvoj in optimizacija plastičnih in gumenih izdelkov</li>
             <li>Tehnična dokumentacija</li>
             <li>Podpora pri proizvodnji</li>
         </ul>
