@@ -70,7 +70,7 @@
         <h3>O podjetju</h3>
         <p>
             Podjetje <strong>Marjan Pleger s.p.</strong> nudi strokovne inženirske
-            rešitve na področju plastike – od ideje do izvedbe.
+            rešitve na področju plastike in gume – od ideje do izvedbe.
             Specializirani smo za tehnično svetovanje, razvoj izdelkov
             in optimizacijo proizvodnih procesov.
         </p>
@@ -79,8 +79,12 @@
     <div class="box">
         <h3>Storitve</h3>
         <ul>
-            <li>Inženirsko svetovanje</li>
-            <li>Razvoj in optimizacija plastičnih izdelkov</li>
+            <li>Konstruiranje orodij za brizganje plastike</li>
+            <li>Konstruiranje orodij za brizganje gume ali stiskanje gume</li>
+            <li>Konstruiranje plastičnih izdelkov</li>
+            <li>Konstruiranje gumjastih izdelkov</li>
+            <li>Inženirsko svetovanje na področju plastike in gume</li>
+            <li>Razvoj in optimizacija plastičnih in gumenih izdelkov</li>
             <li>Tehnična dokumentacija</li>
             <li>Podpora pri proizvodnji</li>
         </ul>
@@ -90,8 +94,8 @@
         <h3>Kontakt</h3>
         <p>
             📍 Slovenija<br>
-            📧 E-pošta: <em>(dodajte email)</em><br>
-            📞 Telefon: <em>(dodajte telefon)</em>
+            📧 E-pošta: <em>plegerm@gmail.com</em><br>
+            📞 Telefon: <em>+386 41 804 143</em>
         </p>
     </div>
 </section>
