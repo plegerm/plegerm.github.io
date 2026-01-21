@@ -8,6 +8,6 @@ INŽENIRING NA PODROČJU PLASTIKE
 </head>
 <body>
     <h1>Živjo!</h1>
-    <p>plegerm@gmail.com 🎉</p>
+    <p>plegerm@gmail.com</p>
 </body>
 </html>
