@@ -8,6 +8,6 @@ INŽENIRING NA PODROČJU PLASTIKE
 </head>
 <body>
     <h1>Živjo!</h1>
-    <p>To je moja prva spletna stran na GitHub Pages 🎉</p>
+    <p>plegerm@gmail.com 🎉</p>
 </body>
 </html>
