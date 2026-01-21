@@ -1,5 +1,5 @@
 # plegerm.github.io
-Spletna stran
+INŽENIRING NA PODROČJU PLASTIKE
 index.html
 <!DOCTYPE html>
 <html lang="sl">
