@@ -9,5 +9,6 @@ INŽENIRING NA PODROČJU PLASTIKE
 <body>
     <h1>Živjo!</h1>
     <p>plegerm@gmail.com</p>
+    <p>+386 41 804 143</p>
 </body>
 </html>
