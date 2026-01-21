@@ -1,5 +1,5 @@
 # plegerm.github.io
-INŽENIRING NA PODROČJU PLASTIKE
+INŽENIRING NA PODROČJU PLASTIKE Marjan Pleger s.p.
 <!DOCTYPE html>
 <html lang="sl">
 <head>
