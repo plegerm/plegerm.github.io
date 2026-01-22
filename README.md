@@ -144,4 +144,68 @@ const content = {
     en: {
         title: "PLASTIC ENGINEERING",
         aboutTitle: "About Us",
-        aboutText: "Marjan Pleger s.p. provides professional engineering solutions in the field of plastics – from concept to production
+        aboutText: "Over 20 years of experience providing professional engineering solutions in plastics and rubber – from concept to production.",
+        servicesTitle: "Services",
+        services: [
+            "Injection mold design",
+            "Rubber mold design",
+            "Plastic product design",
+            "Rubber product design",
+            "Engineering consulting",
+            "Product development and optimization",
+            "Technical documentation",
+            "Production support"
+        ],
+        contactTitle: "Contact",
+        contactText: "📍 Slovenia<br>📧 Email: plegerm@gmail.com<br>📞 Phone: +386 41 804 143",
+        footer: "© 2026 Marjan Pleger s.p. | Plastic Engineering"
+    },
+    de: {
+        title: "KUNSTSTOFFTECHNIK",
+        aboutTitle: "Über uns",
+        aboutText: "Über 20 Jahre Erfahrung in professionellen Ingenieurlösungen im Bereich Kunststoff und Gummi – von der Idee bis zur Umsetzung.",
+        servicesTitle: "Dienstleistungen",
+        services: [
+            "Spritzgusswerkzeug-Konstruktion",
+            "Gummiwerkzeug-Konstruktion",
+            "Kunststoffproduktentwicklung",
+            "Gummiproduktentwicklung",
+            "Ingenieurberatung",
+            "Produktentwicklung und Optimierung",
+            "Technische Dokumentation",
+            "Produktionsunterstützung"
+        ],
+        contactTitle: "Kontakt",
+        contactText: "📍 Slowenien<br>📧 E-Mail: plegerm@gmail.com<br>📞 Telefon: +386 41 804 143",
+        footer: "© 2026 Marjan Pleger s.p. | Kunststofftechnik"
+    }
+};
+
+function setLang(lang) {
+    const data = content[lang];
+    
+    document.getElementById("title").innerText = data.title;
+    document.getElementById("aboutTitle").innerText = data.aboutTitle;
+    document.getElementById("aboutText").innerText = data.aboutText;
+    document.getElementById("servicesTitle").innerText = data.servicesTitle;
+    document.getElementById("contactTitle").innerText = data.contactTitle;
+    document.getElementById("contactText").innerHTML = data.contactText;
+    document.getElementById("footer").innerText = data.footer;
+        
+    const list = document.getElementById("servicesList");
+    list.innerHTML = "";
+    data.services.forEach(item => {
+        const li = document.createElement("li");
+        li.innerText = item;
+        list.appendChild(li);
+    });
+    
+        localStorage.setItem("lang", lang);
+}
+
+const savedLang = localStorage.getItem("lang") || "si";
+setLang(savedLang);
+</script>
+
+</body>
+</html>
