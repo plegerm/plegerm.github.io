@@ -27,39 +27,47 @@ header h2 {
     opacity: 0.9;
 }
 
+/* ===== LANGUAGE BUTTONS ===== */
+
 .lang {
     margin-top: 25px;
 }
 
 .lang button {
-    background: rgba(255,255,255,0.15);
-    border: none;
-    color: white;
-    padding: 8px 14px;
-    margin: 0 5px;
+    width: 46px;
+    height: 32px;
+    margin: 0 6px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
     cursor: pointer;
-    border-radius: 6px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.2s ease, transform 0.1s ease;
+    transition: transform 0.1s ease, border 0.2s ease;
 }
 
 .lang button:hover {
-    background: rgba(255,255,255,0.3);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
 .lang button.active {
-    background: rgba(255,255,255,0.5);
-    color: #003366;
-    font-weight: bold;
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.6) inset;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 6px rgba(255,255,255,0.8);
 }
 
-.lang button span {
-    font-size: 0.8rem;
+/* Zastave */
+.lang button[data-lang="si"] {
+    background-image: url("https://flagcdn.com/w40/si.png");
 }
+
+.lang button[data-lang="en"] {
+    background-image: url("https://flagcdn.com/w40/gb.png");
+}
+
+.lang button[data-lang="de"] {
+    background-image: url("https://flagcdn.com/w40/de.png");
+}
+
+/* ============================ */
 
 section {
     max-width: 1000px;
@@ -94,9 +102,9 @@ footer {
     <h2>Marjan Pleger s.p.</h2>
 
     <div class="lang">
-        <button onclick="setLang('si')" data-lang="si">🇸🇮 <span>SL</span></button>
-        <button onclick="setLang('en')" data-lang="en">🇬🇧 <span>EN</span></button>
-        <button onclick="setLang('de')" data-lang="de">🇩🇪 <span>DE</span></button>
+        <button onclick="setLang('si')" data-lang="si" aria-label="Slovenščina"></button>
+        <button onclick="setLang('en')" data-lang="en" aria-label="English"></button>
+        <button onclick="setLang('de')" data-lang="de" aria-label="Deutsch"></button>
     </div>
 </header>
 
