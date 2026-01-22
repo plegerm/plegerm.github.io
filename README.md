@@ -8,11 +8,12 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-    background:
-        linear-gradient(rgba(0,40,90,0.85), rgba(0,40,90,0.85)),
-        url("https://images.unsplash.com/photo-1581091012184-5c7b8b6c9b5c");
+
+    background-image: url("https://images.unsplash.com/photo-1581091012184-5c7b8b6c9b5c");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* ===== WATERMARK ===== */
@@ -27,7 +28,6 @@ body {
     z-index: 0;
 }
 
-/* vsebina nad watermarkom */
 body > *:not(.watermark) {
     position: relative;
     z-index: 1;
@@ -91,7 +91,7 @@ section {
 }
 
 .box {
-    background: rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.45);
     padding: 30px;
     border-radius: 10px;
     margin-bottom: 30px;
@@ -105,7 +105,7 @@ footer {
     text-align: center;
     padding: 30px;
     font-size: 0.9rem;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.5);
 }
 </style>
 </head>
