@@ -8,31 +8,8 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-
-    background-image: url("https://images.unsplash.com/photo-1581091012184-5c7b8b6c9b5c");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: #0a1a2f; /* enotno temno ozadje */
 }
-
-/* ===== WATERMARK ===== */
-.watermark {
-    position: fixed;
-    inset: 0;
-    background-image: url("https://raw.githubusercontent.com/plegerm/plegerm.github.io/main/Slika%20ozadja%20spletne%20strani.png");
-    background-repeat: repeat;
-    background-size: 300px;
-    opacity: 0.06;
-    pointer-events: none;
-    z-index: 0;
-}
-
-body > *:not(.watermark) {
-    position: relative;
-    z-index: 1;
-}
-/* ===================== */
 
 header {
     text-align: center;
@@ -91,7 +68,7 @@ section {
 }
 
 .box {
-    background: rgba(0,0,0,0.45);
+    background: rgba(255,255,255,0.08);
     padding: 30px;
     border-radius: 10px;
     margin-bottom: 30px;
@@ -105,14 +82,12 @@ footer {
     text-align: center;
     padding: 30px;
     font-size: 0.9rem;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.3);
 }
 </style>
 </head>
 
 <body>
-
-<div class="watermark"></div>
 
 <header>
     <h1 id="title"></h1>
