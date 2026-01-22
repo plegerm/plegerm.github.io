@@ -33,20 +33,19 @@ header h2 {
     margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 14px;
+    gap: 18px;
 }
 
 .lang-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 0.75rem;
-    margin-top: 5px;
 }
 
+/* Gumbi zastav */
 .lang button {
-    width: 48px;
-    height: 32px;
+    width: 52px;
+    height: 34px;
     border: 2px solid transparent;
     border-radius: 4px;
     background-size: cover;
@@ -64,6 +63,15 @@ header h2 {
 .lang button.active {
     border: 2px solid #ffffff;
     box-shadow: 0 0 6px rgba(255,255,255,0.8);
+}
+
+/* Kratice pod zastavami */
+.lang-label {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ffffff;
 }
 
 /* Zastave */
@@ -114,20 +122,22 @@ footer {
     <h2>Marjan Pleger s.p.</h2>
 
     <div class="lang">
+
         <div class="lang-item">
             <button onclick="setLang('si')" data-lang="si" aria-label="Slovenščina"></button>
-            <div>SI</div>
+            <div class="lang-label">SI</div>
         </div>
 
         <div class="lang-item">
             <button onclick="setLang('en')" data-lang="en" aria-label="English"></button>
-            <div>AN</div>
+            <div class="lang-label">AN</div>
         </div>
 
         <div class="lang-item">
             <button onclick="setLang('de')" data-lang="de" aria-label="Deutsch"></button>
-            <div>DE</div>
+            <div class="lang-label">DE</div>
         </div>
+
     </div>
 </header>
 
