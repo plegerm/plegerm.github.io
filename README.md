@@ -27,16 +27,26 @@ header h2 {
     opacity: 0.9;
 }
 
-/* ===== LANGUAGE BUTTONS ===== */
+/* ===== LANGUAGE SELECTOR ===== */
 
 .lang {
     margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.lang-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.75rem;
+    margin-top: 5px;
 }
 
 .lang button {
     width: 48px;
     height: 32px;
-    margin: 0 6px;
     border: 2px solid transparent;
     border-radius: 4px;
     background-size: cover;
@@ -44,7 +54,6 @@ header h2 {
     background-repeat: no-repeat;
     cursor: pointer;
     padding: 0;
-    outline: none;
     transition: transform 0.1s ease, border 0.2s ease;
 }
 
@@ -57,23 +66,17 @@ header h2 {
     box-shadow: 0 0 6px rgba(255,255,255,0.8);
 }
 
-/* Zastave kot ozadje gumbov */
-.lang button[data-lang="si"] {
+/* Zastave */
+button[data-lang="si"] {
     background-image: url("https://flagcdn.com/w80/si.png");
 }
 
-.lang button[data-lang="en"] {
+button[data-lang="en"] {
     background-image: url("https://flagcdn.com/w80/gb.png");
 }
 
-.lang button[data-lang="de"] {
+button[data-lang="de"] {
     background-image: url("https://flagcdn.com/w80/de.png");
-}
-
-/* odstranimo morebitno besedilo v gumbu */
-.lang button::before,
-.lang button::after {
-    content: "";
 }
 
 /* ============================ */
@@ -111,9 +114,20 @@ footer {
     <h2>Marjan Pleger s.p.</h2>
 
     <div class="lang">
-        <button onclick="setLang('si')" data-lang="si" aria-label="Slovenščina"></button>
-        <button onclick="setLang('en')" data-lang="en" aria-label="English"></button>
-        <button onclick="setLang('de')" data-lang="de" aria-label="Deutsch"></button>
+        <div class="lang-item">
+            <button onclick="setLang('si')" data-lang="si" aria-label="Slovenščina"></button>
+            <div>SI</div>
+        </div>
+
+        <div class="lang-item">
+            <button onclick="setLang('en')" data-lang="en" aria-label="English"></button>
+            <div>AN</div>
+        </div>
+
+        <div class="lang-item">
+            <button onclick="setLang('de')" data-lang="de" aria-label="Deutsch"></button>
+            <div>DE</div>
+        </div>
     </div>
 </header>
 
