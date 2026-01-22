@@ -33,7 +33,7 @@ header h2 {
 }
 
 .lang {
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .lang button {
@@ -43,11 +43,27 @@ header h2 {
     padding: 8px 14px;
     margin: 0 5px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .lang button:hover {
     background: rgba(255,255,255,0.3);
+    transform: translateY(-1px);
+}
+
+.lang button.active {
+    background: rgba(255,255,255,0.5);
+    color: #003366;
+    font-weight: bold;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.6) inset;
+}
+
+.lang button span {
+    font-size: 0.8rem;
 }
 
 section {
@@ -83,9 +99,9 @@ footer {
     <h2>Marjan Pleger s.p.</h2>
 
     <div class="lang">
-        <button onclick="setLang('si')">SL</button>
-        <button onclick="setLang('en')">EN</button>
-        <button onclick="setLang('de')">DE</button>
+        <button onclick="setLang('si')" data-lang="si">🇸🇮 <span>SL</span></button>
+        <button onclick="setLang('en')" data-lang="en">🇬🇧 <span>EN</span></button>
+        <button onclick="setLang('de')" data-lang="de">🇩🇪 <span>DE</span></button>
     </div>
 </header>
 
@@ -174,6 +190,7 @@ const content = {
 function setLang(lang) {
     const data = content[lang];
 
+    document.documentElement.lang = lang;
     document.getElementById("title").innerText = data.title;
     document.getElementById("aboutTitle").innerText = data.aboutTitle;
     document.getElementById("aboutText").innerText = data.aboutText;
@@ -188,6 +205,10 @@ function setLang(lang) {
         const li = document.createElement("li");
         li.innerText = item;
         list.appendChild(li);
+    });
+
+    document.querySelectorAll(".lang button").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
     });
 
     localStorage.setItem("lang", lang);
