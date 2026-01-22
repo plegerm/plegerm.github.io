@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
@@ -93,8 +92,8 @@
     <div class="box">
         <h3 id="aboutTitle">O podjetju</h3>
         <p id="aboutText">
-            Podjetje Marjan Pleger s.p. nudi strokovne inženirske rešitve
-            na področju plastike – od ideje do izvedbe.
+            Podjetje z več kot 20 let izkušenj nudi strokovne inženirske rešitve
+            na področju plastike in gume – od ideje do izvedbe.
         </p>
     </div>
 
@@ -116,8 +115,8 @@
         <h3 id="contactTitle">Kontakt</h3>
         <p id="contactText">
             📍 Slovenija<br>
-            📧 E-pošta: (dodajte email)<br>
-            📞 Telefon: (dodajte telefon)
+            📧 E-pošta: (plegerm@gmail.com)<br>
+            📞 Telefon: (+386 41 804 143)
         </p>
     </div>
 </section>
