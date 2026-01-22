@@ -92,7 +92,7 @@
     <div class="box">
         <h3 id="aboutTitle">O podjetju</h3>
         <p id="aboutText">
-            Podjetje z več kot 20 let izkušenj nudi strokovne inženirske rešitve
+            Več kot 20 let izkušenj s področja strokovnih inženirskih rešitev
             na področju plastike in gume – od ideje do izvedbe.
         </p>
     </div>
