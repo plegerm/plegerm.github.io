@@ -15,6 +15,25 @@ body {
     background-position: center;
 }
 
+/* ===== WATERMARK ===== */
+.watermark {
+    position: fixed;
+    inset: 0;
+    background-image: url("https://raw.githubusercontent.com/plegerm/plegerm.github.io/main/Slika%20ozadja%20spletne%20strani.png");
+    background-repeat: repeat;
+    background-size: 300px;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* vsebina nad watermarkom */
+body > *:not(.watermark) {
+    position: relative;
+    z-index: 1;
+}
+/* ===================== */
+
 header {
     text-align: center;
     padding: 120px 20px 80px;
@@ -92,6 +111,8 @@ footer {
 </head>
 
 <body>
+
+<div class="watermark"></div>
 
 <header>
     <h1 id="title"></h1>
