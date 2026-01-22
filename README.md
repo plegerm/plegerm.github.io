@@ -11,18 +11,9 @@ body {
     background-color: #0a1a2f;
 }
 
-/* ===== HERO HEADER SLIKA ===== */
 header {
     text-align: center;
-    padding: 140px 20px 100px;
-
-    background-image: url("https://raw.githubusercontent.com/plegerm/plegerm.github.io/main/Slika%20ozadja%20spletne%20strani.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    /* rahel temni sloj za boljšo berljivost teksta */
-    box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.45);
+    padding: 120px 20px 80px;
 }
 
 header h1 {
@@ -35,8 +26,6 @@ header h2 {
     font-size: 1.4rem;
     opacity: 0.9;
 }
-
-/* ============================ */
 
 .lang {
     margin-top: 25px;
@@ -153,6 +142,7 @@ const content = {
         contactText: "📍 Slovenija<br>📧 E-pošta: plegerm@gmail.com<br>📞 Telefon: +386 41 804 143",
         footer: "© 2026 Marjan Pleger s.p. | Inženiring na področju plastike"
     },
+
     en: {
         title: "PLASTIC ENGINEERING",
         aboutTitle: "About Us",
@@ -174,6 +164,7 @@ const content = {
         contactText: "📍 Slovenia<br>📧 Email: plegerm@gmail.com<br>📞 Phone: +386 41 804 143",
         footer: "© 2026 Marjan Pleger s.p. | Plastic Engineering"
     },
+
     de: {
         title: "KUNSTSTOFFTECHNIK",
         aboutTitle: "Über uns",
@@ -199,6 +190,7 @@ const content = {
 
 function setLang(lang) {
     const data = content[lang];
+
     document.documentElement.lang = lang;
     document.getElementById("title").innerText = data.title;
     document.getElementById("aboutTitle").innerText = data.aboutTitle;
