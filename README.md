@@ -34,14 +34,17 @@ header h2 {
 }
 
 .lang button {
-    width: 46px;
+    width: 48px;
     height: 32px;
     margin: 0 6px;
     border: 2px solid transparent;
     border-radius: 4px;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     cursor: pointer;
+    padding: 0;
+    outline: none;
     transition: transform 0.1s ease, border 0.2s ease;
 }
 
@@ -54,17 +57,23 @@ header h2 {
     box-shadow: 0 0 6px rgba(255,255,255,0.8);
 }
 
-/* Zastave */
+/* Zastave kot ozadje gumbov */
 .lang button[data-lang="si"] {
-    background-image: url("https://flagcdn.com/w40/si.png");
+    background-image: url("https://flagcdn.com/w80/si.png");
 }
 
 .lang button[data-lang="en"] {
-    background-image: url("https://flagcdn.com/w40/gb.png");
+    background-image: url("https://flagcdn.com/w80/gb.png");
 }
 
 .lang button[data-lang="de"] {
-    background-image: url("https://flagcdn.com/w40/de.png");
+    background-image: url("https://flagcdn.com/w80/de.png");
+}
+
+/* odstranimo morebitno besedilo v gumbu */
+.lang button::before,
+.lang button::after {
+    content: "";
 }
 
 /* ============================ */
