@@ -27,7 +27,6 @@ header h2 {
     opacity: 0.9;
 }
 
-
 /* ===== DOKUMENTI - DROPDOWN GUMB ===== */
 
 .docs-menu {
@@ -72,7 +71,6 @@ header h2 {
 .docs-show {
     display: block;
 }
-
 
 /* ===== LANGUAGE SELECTOR ===== */
 
@@ -167,7 +165,6 @@ footer {
 <div class="docs-menu">
     <button id="docsBtn" class="docs-btn" onclick="toggleDocs()" aria-haspopup="true" aria-expanded="false">Dokumenti ▾</button>
     <div id="docsDropdown" class="docs-dropdown" role="menu" aria-labelledby="docsBtn">
-        <!-- Linke polnimo dinamično glede na jezik -->
     </div>
 </div>
 
@@ -176,6 +173,7 @@ footer {
     <h2>Marjan Pleger s.p.</h2>
 
     <div class="lang">
+
         <div class="lang-item">
             <button onclick="setLang('si')" data-lang="si" aria-label="Slovenščina"></button>
             <div class="lang-label">SI</div>
@@ -190,6 +188,7 @@ footer {
             <button onclick="setLang('de')" data-lang="de" aria-label="Deutsch"></button>
             <div class="lang-label">DE</div>
         </div>
+
     </div>
 </header>
 
@@ -221,7 +220,6 @@ function toggleDocs() {
     btn.setAttribute("aria-expanded", willShow ? "true" : "false");
 }
 
-// Zapiranje dropdowna, ko klikneš izven njega
 window.addEventListener("click", function(event) {
     const btn = document.getElementById("docsBtn");
     const dd  = document.getElementById("docsDropdown");
@@ -310,68 +308,8 @@ const content = {
 function setLang(lang) {
     const data = content[lang];
 
-    // jezik dokumenta (npr. za bralnike in SEO)
     document.documentElement.lang = lang;
 
-    // Naslovi, besedila
     document.getElementById("title").innerText = data.title;
     document.getElementById("aboutTitle").innerText = data.aboutTitle;
     document.getElementById("aboutText").innerText = data.aboutText;
-    document.getElementById("servicesTitle").innerText = data.servicesTitle;
-    document.getElementById("contactTitle").innerText = data.contactTitle;
-    document.getElementById("contactText").innerHTML = data.contactText;
-    document.getElementById("footer").innerText = data.footer;
-
-    // Storitve (seznam)
-    const list = document.getElementById("servicesList");
-    list.innerHTML = "";
-    data.services.forEach(item => {
-        const li = document.createElement("li");
-        li.innerText = item;
-        list.appendChild(li);
-    });
-
-    // *** DOKUMENTI: posodobi gumb in dropdown ***
-    const docsBtn = document.getElementById("docsBtn");
-    const docsDropdown = document.getElementById("docsDropdown");
-
-    docsBtn.innerText = data.docsTitle + " ▾";
-    docsBtn.setAttribute("aria-label", data.docsTitle);
-
-    // Po želji: prevedi tudi imena dokumentov
-    const docLinks = [
-        { href: "dokument1.pdf" },
-        { href: "dokument2.pdf" },
-        { href: "dokument3.pdf" }
-    ];
-    docsDropdown.innerHTML = "";
-    data.documents.forEach((label, idx) => {
-        const a = document.createElement("a");
-        a.href = docLinks[idx]?.href || "#";
-        a.target = "_blank";
-        a.innerText = label;
-        a.setAttribute("role", "menuitem");
-        docsDropdown.appendChild(a);
-    });
-
-    // Aktivni indikator na zastavi
-    document.querySelectorAll(".lang button").forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.lang === lang);
-    });
-
-    // Ob menjavi jezika zapri odprt dropdown
-    if (docsDropdown.classList.contains("docs-show")) {
-        docsDropdown.classList.remove("docs-show");
-        docsBtn.setAttribute("aria-expanded", "false");
-    }
-
-    // Shrani izbiro
-    localStorage.setItem("lang", lang);
-}
-
-const savedLang = localStorage.getItem("lang") || "si";
-setLang(savedLang);
-</script>
-
-</body>
-</html>
