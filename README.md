@@ -166,6 +166,17 @@ footer {
 
 <body>
 
+
+<div class="docs-menu">
+    <button class="docs-btn" onclick="toggleDocs()">Dokumenti ▾</button>
+    <div id="docsDropdown" class="docs-dropdown">
+        <a href="dokument1.pdf" target="_blank">Dokument 1</a>
+        <a href="dokument2.pdf" target="_blank">Dokument 2</a>
+        <a href="dokument3.pdf" target="_blank">Dokument 3</a>
+    </div>
+</div>
+
+
 <header>
     <h1 id="title"></h1>
     <h2>Marjan Pleger s.p.</h2>
@@ -210,6 +221,23 @@ footer {
 <footer id="footer"></footer>
 
 <script>
+
+    
+function toggleDocs() {
+    document.getElementById("docsDropdown").classList.toggle("docs-show");
+}
+
+// Zapiranje dropdowna, ko klikneš izven njega
+window.addEventListener("click", function(event) {
+    if (!event.target.matches('.docs-btn')) {
+        const box = document.getElementById("docsDropdown");
+        if (box.classList.contains("docs-show")) {
+            box.classList.remove("docs-show");
+        }
+    }
+});
+
+    
 const content = {
     si: {
         title: "INŽENIRING NA PODROČJU PLASTIKE",
