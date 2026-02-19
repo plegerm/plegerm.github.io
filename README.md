@@ -38,7 +38,6 @@ header h2 {
 }
 
 .docs-btn {
-
     background-color: #0078D4;
     color: white;
     padding: 10px 18px;
@@ -56,7 +55,6 @@ header h2 {
     min-width: 180px;
     border-radius: 6px;
     overflow: hidden;
-
     box-shadow: 0 8px 16px rgba(0,0,0,0.3);
 }
 
@@ -75,7 +73,7 @@ header h2 {
     display: block;
 }
 
-    
+
 /* ===== LANGUAGE SELECTOR ===== */
 
 .lang {
@@ -166,23 +164,18 @@ footer {
 
 <body>
 
-
 <div class="docs-menu">
-    <button class="docs-btn" onclick="toggleDocs()">Dokumenti ▾</button>
-    <div id="docsDropdown" class="docs-dropdown">
-        <a href="dokument1.pdf" target="_blank">Dokument 1</a>
-        <a href="dokument2.pdf" target="_blank">Dokument 2</a>
-        <a href="dokument3.pdf" target="_blank">Dokument 3</a>
+    <button id="docsBtn" class="docs-btn" onclick="toggleDocs()" aria-haspopup="true" aria-expanded="false">Dokumenti ▾</button>
+    <div id="docsDropdown" class="docs-dropdown" role="menu" aria-labelledby="docsBtn">
+        <!-- Linke polnimo dinamično glede na jezik -->
     </div>
 </div>
-
 
 <header>
     <h1 id="title"></h1>
     <h2>Marjan Pleger s.p.</h2>
 
     <div class="lang">
-
         <div class="lang-item">
             <button onclick="setLang('si')" data-lang="si" aria-label="Slovenščina"></button>
             <div class="lang-label">SI</div>
@@ -197,7 +190,6 @@ footer {
             <button onclick="setLang('de')" data-lang="de" aria-label="Deutsch"></button>
             <div class="lang-label">DE</div>
         </div>
-
     </div>
 </header>
 
@@ -221,26 +213,31 @@ footer {
 <footer id="footer"></footer>
 
 <script>
-
-    
 function toggleDocs() {
-    document.getElementById("docsDropdown").classList.toggle("docs-show");
+    const dd = document.getElementById("docsDropdown");
+    const btn = document.getElementById("docsBtn");
+    const willShow = !dd.classList.contains("docs-show");
+    dd.classList.toggle("docs-show");
+    btn.setAttribute("aria-expanded", willShow ? "true" : "false");
 }
 
 // Zapiranje dropdowna, ko klikneš izven njega
 window.addEventListener("click", function(event) {
-    if (!event.target.matches('.docs-btn')) {
-        const box = document.getElementById("docsDropdown");
-        if (box.classList.contains("docs-show")) {
-            box.classList.remove("docs-show");
-        }
+    const btn = document.getElementById("docsBtn");
+    const dd  = document.getElementById("docsDropdown");
+    const clickedBtn = event.target === btn;
+    const clickedInsideDropdown = dd.contains(event.target);
+    if (!clickedBtn && !clickedInsideDropdown && dd.classList.contains("docs-show")) {
+        dd.classList.remove("docs-show");
+        btn.setAttribute("aria-expanded", "false");
     }
 });
 
-    
 const content = {
     si: {
         title: "INŽENIRING NA PODROČJU PLASTIKE",
+        docsTitle: "Dokumenti",
+        documents: ["Dokument 1", "Dokument 2", "Dokument 3"],
         aboutTitle: "O podjetju",
         aboutText: "Več kot 20 let izkušenj s področja strokovnih inženirskih rešitev na področju plastike in gume – od ideje do izvedbe.",
         servicesTitle: "Storitve",
@@ -263,6 +260,8 @@ const content = {
 
     en: {
         title: "PLASTIC ENGINEERING",
+        docsTitle: "Documents",
+        documents: ["Document 1", "Document 2", "Document 3"],
         aboutTitle: "About Us",
         aboutText: "Over 20 years of experience providing professional engineering solutions in plastics and rubber – from concept to production.",
         servicesTitle: "Services",
@@ -285,6 +284,8 @@ const content = {
 
     de: {
         title: "KUNSTSTOFFTECHNIK",
+        docsTitle: "Dokumente",
+        documents: ["Dokument 1", "Dokument 2", "Dokument 3"],
         aboutTitle: "Über uns",
         aboutText: "Über 20 Jahre Erfahrung in professionellen Ingenieurlösungen im Bereich Kunststoff und Gummi – von der Idee bis zur Umsetzung.",
         servicesTitle: "Dienstleistungen",
@@ -309,7 +310,10 @@ const content = {
 function setLang(lang) {
     const data = content[lang];
 
+    // jezik dokumenta (npr. za bralnike in SEO)
     document.documentElement.lang = lang;
+
+    // Naslovi, besedila
     document.getElementById("title").innerText = data.title;
     document.getElementById("aboutTitle").innerText = data.aboutTitle;
     document.getElementById("aboutText").innerText = data.aboutText;
@@ -318,6 +322,7 @@ function setLang(lang) {
     document.getElementById("contactText").innerHTML = data.contactText;
     document.getElementById("footer").innerText = data.footer;
 
+    // Storitve (seznam)
     const list = document.getElementById("servicesList");
     list.innerHTML = "";
     data.services.forEach(item => {
@@ -326,10 +331,41 @@ function setLang(lang) {
         list.appendChild(li);
     });
 
+    // *** DOKUMENTI: posodobi gumb in dropdown ***
+    const docsBtn = document.getElementById("docsBtn");
+    const docsDropdown = document.getElementById("docsDropdown");
+
+    docsBtn.innerText = data.docsTitle + " ▾";
+    docsBtn.setAttribute("aria-label", data.docsTitle);
+
+    // Po želji: prevedi tudi imena dokumentov
+    const docLinks = [
+        { href: "dokument1.pdf" },
+        { href: "dokument2.pdf" },
+        { href: "dokument3.pdf" }
+    ];
+    docsDropdown.innerHTML = "";
+    data.documents.forEach((label, idx) => {
+        const a = document.createElement("a");
+        a.href = docLinks[idx]?.href || "#";
+        a.target = "_blank";
+        a.innerText = label;
+        a.setAttribute("role", "menuitem");
+        docsDropdown.appendChild(a);
+    });
+
+    // Aktivni indikator na zastavi
     document.querySelectorAll(".lang button").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
     });
 
+    // Ob menjavi jezika zapri odprt dropdown
+    if (docsDropdown.classList.contains("docs-show")) {
+        docsDropdown.classList.remove("docs-show");
+        docsBtn.setAttribute("aria-expanded", "false");
+    }
+
+    // Shrani izbiro
     localStorage.setItem("lang", lang);
 }
 
