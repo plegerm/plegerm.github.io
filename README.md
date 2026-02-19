@@ -44,6 +44,14 @@ header h2 {
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.docs-btn-arrow {
+    margin-left: 4px;
+    font-size: 14px;
 }
 
 .docs-dropdown {
@@ -132,8 +140,6 @@ button[data-lang="de"] {
     background-image: url("https://flagcdn.com/w80/de.png");
 }
 
-/* ============================ */
-
 section {
     max-width: 1000px;
     margin: auto;
@@ -162,10 +168,14 @@ footer {
 
 <body>
 
+<!-- POPRAVLJEN GUMB -->
 <div class="docs-menu">
-    <button id="docsBtn" class="docs-btn" onclick="toggleDocs()" aria-haspopup="true" aria-expanded="false">Dokumenti ▾</button>
-    <div id="docsDropdown" class="docs-dropdown" role="menu" aria-labelledby="docsBtn">
-    </div>
+    <button id="docsBtn" class="docs-btn" onclick="toggleDocs()">
+        <span id="docsLabel">Dokumenti</span>
+        <span class="docs-btn-arrow">▾</span>
+    </button>
+
+    <div id="docsDropdown" class="docs-dropdown"></div>
 </div>
 
 <header>
@@ -173,22 +183,20 @@ footer {
     <h2>Marjan Pleger s.p.</h2>
 
     <div class="lang">
-
         <div class="lang-item">
-            <button onclick="setLang('si')" data-lang="si" aria-label="Slovenščina"></button>
+            <button onclick="setLang('si')" data-lang="si"></button>
             <div class="lang-label">SI</div>
         </div>
 
         <div class="lang-item">
-            <button onclick="setLang('en')" data-lang="en" aria-label="English"></button>
+            <button onclick="setLang('en')" data-lang="en"></button>
             <div class="lang-label">AN</div>
         </div>
 
         <div class="lang-item">
-            <button onclick="setLang('de')" data-lang="de" aria-label="Deutsch"></button>
+            <button onclick="setLang('de')" data-lang="de"></button>
             <div class="lang-label">DE</div>
         </div>
-
     </div>
 </header>
 
@@ -214,102 +222,78 @@ footer {
 <script>
 function toggleDocs() {
     const dd = document.getElementById("docsDropdown");
-    const btn = document.getElementById("docsBtn");
-    const willShow = !dd.classList.contains("docs-show");
     dd.classList.toggle("docs-show");
-    btn.setAttribute("aria-expanded", willShow ? "true" : "false");
 }
 
+// zapiranje dropdowna
 window.addEventListener("click", function(event) {
     const btn = document.getElementById("docsBtn");
     const dd  = document.getElementById("docsDropdown");
-    const clickedBtn = event.target === btn;
-    const clickedInsideDropdown = dd.contains(event.target);
-    if (!clickedBtn && !clickedInsideDropdown && dd.classList.contains("docs-show")) {
+    if (!btn.contains(event.target) && !dd.contains(event.target)) {
         dd.classList.remove("docs-show");
-        btn.setAttribute("aria-expanded", "false");
     }
 });
 
 const content = {
-    si: {
-        title: "INŽENIRING NA PODROČJU PLASTIKE",
-        docsTitle: "Dokumenti",
-        documents: ["Dokument 1", "Dokument 2", "Dokument 3"],
-        aboutTitle: "O podjetju",
-        aboutText: "Več kot 20 let izkušenj s področja strokovnih inženirskih rešitev na področju plastike in gume – od ideje do izvedbe.",
-        servicesTitle: "Storitve",
-        services: [
-            "Konstruiranje orodij za brizganje plastike",
-            "Konstruiranje orodij za brizganje ali stiskanje gume",
-            "Konstruiranje plastičnih izdelkov",
-            "Konstruiranje gumjastih izdelkov",
-            "Moldflow analiza",
-            "Izdelava DFM",
-            "Inženirsko svetovanje",
-            "Razvoj in optimizacija izdelkov",
-            "Tehnična dokumentacija",
-            "Podpora pri proizvodnji"
-        ],
-        contactTitle: "Kontakt",
-        contactText: "📍 Slovenija<br>📧 E-pošta: plegerm@gmail.com<br>📞 Telefon: +386 41 804 143",
-        footer: "© 2026 Marjan Pleger s.p. | Inženiring na področju plastike"
-    },
+    si: { docsTitle: "Dokumenti", documents: ["Dokument 1","Dokument 2","Dokument 3"],
+          title:"INŽENIRING NA PODROČJU PLASTIKE", aboutTitle:"O podjetju",
+          aboutText:"Več kot 20 let izkušenj ...",
+          servicesTitle:"Storitve", services:["Konstruiranje...", "Moldflow analiza"],
+          contactTitle:"Kontakt", contactText:"📍 Slovenija<br>📧 ...", footer:"© 2026 ..." },
 
-    en: {
-        title: "PLASTIC ENGINEERING",
-        docsTitle: "Documents",
-        documents: ["Document 1", "Document 2", "Document 3"],
-        aboutTitle: "About Us",
-        aboutText: "Over 20 years of experience providing professional engineering solutions in plastics and rubber – from concept to production.",
-        servicesTitle: "Services",
-        services: [
-            "Injection mold design",
-            "Rubber mold design",
-            "Plastic product design",
-            "Rubber product design",
-            "Moldflow analysis",
-            "Preparing DFM",
-            "Engineering consulting",
-            "Product development and optimization",
-            "Technical documentation",
-            "Production support"
-        ],
-        contactTitle: "Contact",
-        contactText: "📍 Slovenia<br>📧 Email: plegerm@gmail.com<br>📞 Phone: +386 41 804 143",
-        footer: "© 2026 Marjan Pleger s.p. | Plastic Engineering"
-    },
+    en: { docsTitle: "Documents", documents: ["Document 1","Document 2","Document 3"],
+          title:"PLASTIC ENGINEERING", aboutTitle:"About Us",
+          aboutText:"Over 20 years ...",
+          servicesTitle:"Services", services:["Injection mold design","Rubber mold design"],
+          contactTitle:"Contact", contactText:"📍 Slovenia<br>📧 ...", footer:"© 2026 ..." },
 
-    de: {
-        title: "KUNSTSTOFFTECHNIK",
-        docsTitle: "Dokumente",
-        documents: ["Dokument 1", "Dokument 2", "Dokument 3"],
-        aboutTitle: "Über uns",
-        aboutText: "Über 20 Jahre Erfahrung in professionellen Ingenieurlösungen im Bereich Kunststoff und Gummi – von der Idee bis zur Umsetzung.",
-        servicesTitle: "Dienstleistungen",
-        services: [
-            "Spritzgusswerkzeug-Konstruktion",
-            "Gummiwerkzeug-Konstruktion",
-            "Kunststoffproduktentwicklung",
-            "Gummiproduktentwicklung",
-            "Moldflow Analyse",
-            "Erstellen DFM",
-            "Ingenieurberatung",
-            "Produktentwicklung und Optimierung",
-            "Technische Dokumentation",
-            "Produktionsunterstützung"
-        ],
-        contactTitle: "Kontakt",
-        contactText: "📍 Slowenien<br>📧 E-Mail: plegerm@gmail.com<br>📞 Telefon: +386 41 804 143",
-        footer: "© 2026 Marjan Pleger s.p. | Kunststofftechnik"
-    }
+    de: { docsTitle: "Dokumente", documents: ["Dokument 1","Dokument 2","Dokument 3"],
+          title:"KUNSTSTOFFTECHNIK", aboutTitle:"Über uns",
+          aboutText:"Über 20 Jahre ...",
+          servicesTitle:"Dienstleistungen", services:["Spritzguss...","DFM erstellen"],
+          contactTitle:"Kontakt", contactText:"📍 Slowenien<br>📧 ...", footer:"© 2026 ..." }
 };
 
 function setLang(lang) {
-    const data = content[lang];
+    const d = content[lang];
 
-    document.documentElement.lang = lang;
+    document.getElementById("docsLabel").innerText = d.docsTitle;
 
-    document.getElementById("title").innerText = data.title;
-    document.getElementById("aboutTitle").innerText = data.aboutTitle;
-    document.getElementById("aboutText").innerText = data.aboutText;
+    const dropdown = document.getElementById("docsDropdown");
+    dropdown.innerHTML = "";
+    d.documents.forEach(name => {
+        const a = document.createElement("a");
+        a.innerText = name;
+        a.href = "#";
+        dropdown.appendChild(a);
+    });
+
+    document.getElementById("title").innerText = d.title;
+    document.getElementById("aboutTitle").innerText = d.aboutTitle;
+    document.getElementById("aboutText").innerText = d.aboutText;
+    document.getElementById("servicesTitle").innerText = d.servicesTitle;
+    document.getElementById("contactTitle").innerText = d.contactTitle;
+    document.getElementById("contactText").innerHTML = d.contactText;
+    document.getElementById("footer").innerText = d.footer;
+
+    const list = document.getElementById("servicesList");
+    list.innerHTML = "";
+    d.services.forEach(s => {
+        const li = document.createElement("li");
+        li.innerText = s;
+        list.appendChild(li);
+    });
+
+    document.querySelectorAll(".lang button").forEach(btn =>
+        btn.classList.toggle("active", btn.dataset.lang === lang)
+    );
+
+    localStorage.setItem("lang", lang);
+}
+
+setLang(localStorage.getItem("lang") || "si");
+</script>
+
+</body>
+</html>
+``
