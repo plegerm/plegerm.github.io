@@ -27,6 +27,55 @@ header h2 {
     opacity: 0.9;
 }
 
+
+/* ===== DOKUMENTI - DROPDOWN GUMB ===== */
+
+.docs-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.docs-btn {
+
+    background-color: #0078D4;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.docs-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 180px;
+    border-radius: 6px;
+    overflow: hidden;
+
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.docs-dropdown a {
+    display: block;
+    padding: 12px 14px;
+    color: #000;
+    text-decoration: none;
+}
+
+.docs-dropdown a:hover {
+    background: #f2f2f2;
+}
+
+.docs-show {
+    display: block;
+}
+
+    
 /* ===== LANGUAGE SELECTOR ===== */
 
 .lang {
