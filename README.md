@@ -10,7 +10,7 @@ body {
     color: white;
     background-color: #0a1a2f;
 }
-
+    
 header {
     text-align: center;
     padding: 120px 20px 80px;
